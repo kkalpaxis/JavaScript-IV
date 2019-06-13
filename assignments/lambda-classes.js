@@ -11,25 +11,6 @@ class Person {
     }
 }
 
-class Student extends Person {
-    constructor (pupil) {
-        super(pupil);
-        this.previousBackground = pupil.previousBackground;
-        this.className = pupil.className;
-        this.favSubjects = pupil.favSubjects;
-        this.subject = pupil.subject;
-    };
-    listsSubjects () {
-        console.log(`${this.name}'s favorite subjects are ${this.favSubjects}.`);
-    };
-    PRAssignment () {
-        console.log(`${this.name} has submitted a PR for ${this.subject}.`) ;
-    };
-    sprintChallenge () {
-        console.log(`${this.name} has begun sprint challenge on ${this.subject}.`) ;
-    }
-}
-
 class Instructor extends Person {
     constructor (teacher) {
         super(teacher);
@@ -44,6 +25,35 @@ class Instructor extends Person {
     grade (Student) {
         console.log(`${Student.name} receives a perfect score on ${Student.subject}.`);
     };
+    randomGrade (Student) {
+        function randomPoints () {
+            return Math.round(Math.random() * 10);
+        }
+        return Student.grade - randomPoints();
+    };
+}
+
+class Student extends Person {
+    constructor (pupil) {
+        super(pupil);
+        this.previousBackground = pupil.previousBackground;
+        this.className = pupil.className;
+        this.favSubjects = pupil.favSubjects;
+        this.subject = pupil.subject;
+        this.grade = pupil.grade;
+    };
+    listsSubjects () {
+        console.log(`${this.name}'s favorite subjects are ${this.favSubjects}.`);
+    };
+    PRAssignment () {
+        console.log(`${this.name} has submitted a PR for ${this.subject}.`) ;
+    };
+    sprintChallenge () {
+        console.log(`${this.name} has begun sprint challenge on ${this.subject}.`) ;
+    }
+    graduate () { 
+
+    }
 }
 
 class ProjectManager extends Instructor {
@@ -85,6 +95,7 @@ const Karina = new Student ({
     'className' : 'WEB21',
     'favSubjects' : ['HTML', ' CSS', ' and Javascript'],
     'subject' : 'Javascript IV',
+    'grade' : 95,
 });
 
 const Brandon = new ProjectManager ({
@@ -96,8 +107,11 @@ const Brandon = new ProjectManager ({
     'channel' : 'best channel',
 });
 
-const studentOfPM = 'Karina';
+let newGrade = Dan.randomGrade(Karina);
 
+console.log(newGrade);
+
+/*
 KarinaTest.speak();
 Dan.demo();
 Dan.grade(Karina);  
@@ -106,6 +120,9 @@ Karina.PRAssignment();
 Karina.sprintChallenge();
 Brandon.standUp();
 Brandon.debugsCode(Karina);
+console.log(Dan.randomGrade(Karina));
+*/
+
 
 
 
