@@ -7,9 +7,9 @@ class Person {
       this.location = individual.location; 
     };
     speak () {
-        console.log(`Hello my name is ${this.name}, I am from ${this.location}.`);
-    }
-}
+        return `Hello my name is ${this.name}, I am from ${this.location}.`;
+    };
+};
 
 class Instructor extends Person {
     constructor (teacher) {
@@ -20,22 +20,22 @@ class Instructor extends Person {
         this.subject = teacher.subject;
     };
     demo () {
-        console.log(`Today we are learning about ${this.subject}.`);
+        return `Today we are learning about ${this.subject}.`;
     };
     grade (Student) {
-        console.log(`${Student.name} receives a perfect score on ${Student.subject}.`);
+        return `${Student.name} receives a perfect score on ${Student.subject}.`;
     };
     randomGrade (Student) {
-        return Student.grade - randomPoints();
+       return Student.grade - randomPoints();
     };
-    graduate (Student) { 
-        if (this.randomGrade(Student) > 70) {
-            return `${Student.name} is ready to graduate!`
+    /* graduate () { 
+        if (this.randomGrade() > 70) {
+            return ` is ready to graduate!`
         } else {
-            return `${Student.name} is not quite ready to graduate.`
+            return ` is not quite ready to graduate.`
         }
-    };
-}
+    }; */
+};
 
 class Student extends Person {
     constructor (pupil) {
@@ -47,15 +47,15 @@ class Student extends Person {
         this.grade = pupil.grade;
     };
     listsSubjects () {
-        console.log(`${this.name}'s favorite subjects are ${this.favSubjects}.`);
+        return `${this.name}'s favorite subjects are ${this.favSubjects}.`;
     };
     PRAssignment () {
-        console.log(`${this.name} has submitted a PR for ${this.subject}.`) ;
+        return `${this.name} has submitted a PR for ${this.subject}.`;
     };
     sprintChallenge () {
-        console.log(`${this.name} has begun sprint challenge on ${this.subject}.`) ;
-    }
-}
+        return `${this.name} has begun sprint challenge on ${this.subject}.`;
+    };
+};
 
 class ProjectManager extends Instructor {
     constructor (PM) {
@@ -65,12 +65,12 @@ class ProjectManager extends Instructor {
         this.channel = PM.channel;
     };
     standUp () {
-        console.log(`${this.name} announces to ${this.channel} @channel standy times!`);
-    }
+        return `${this.name} announces to ${this.channel} @channel standy times!`;
+    };
     debugsCode (Student) {
-        console.log(`${this.name} debugs ${Student.name}'s code on ${Student.subject}.`);
-    }
-}
+        return `${this.name} debugs ${Student.name}'s code on ${Student.subject}.`;
+    };
+};
 
 const KarinaTest = new Person ({
     'name': 'Karina',
@@ -112,20 +112,17 @@ var randomPoints = function () {
     return Math.round(Math.random() * 100);   
 };
 
-KarinaTest.speak();
-Dan.demo();
-Dan.grade(Karina);  
-Karina.listsSubjects();
-Karina.PRAssignment();
-Karina.sprintChallenge();
-Brandon.standUp();
-Brandon.debugsCode(Karina);
-console.log(Dan.randomGrade(Karina));
-console.log(Dan.graduate(Karina));
 
-//STRETCH
-console.log(Dan.randomGrade(Karina));
-console.log(Dan.graduate(Karina));
+console.log(KarinaTest.speak());
+console.log(Dan.demo());
+console.log(Dan.grade(Karina));  
+console.log(Karina.listsSubjects());
+console.log(Karina.PRAssignment());
+console.log(Karina.sprintChallenge());
+console.log(Brandon.standUp());
+console.log(Brandon.debugsCode(Karina));
+
+
 
 
 
