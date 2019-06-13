@@ -26,10 +26,14 @@ class Instructor extends Person {
         console.log(`${Student.name} receives a perfect score on ${Student.subject}.`);
     };
     randomGrade (Student) {
-        function randomPoints () {
-            return Math.round(Math.random() * 10);
-        }
         return Student.grade - randomPoints();
+    };
+    graduate (Student) { 
+        if (this.randomGrade(Student) > 70) {
+            return `${Student.name} is ready to graduate!`
+        } else {
+            return `${Student.name} is not quite ready to graduate.`
+        }
     };
 }
 
@@ -50,9 +54,6 @@ class Student extends Person {
     };
     sprintChallenge () {
         console.log(`${this.name} has begun sprint challenge on ${this.subject}.`) ;
-    }
-    graduate () { 
-
     }
 }
 
@@ -107,11 +108,10 @@ const Brandon = new ProjectManager ({
     'channel' : 'best channel',
 });
 
-let newGrade = Dan.randomGrade(Karina);
+var randomPoints = function () {
+    return Math.round(Math.random() * 100);   
+};
 
-console.log(newGrade);
-
-/*
 KarinaTest.speak();
 Dan.demo();
 Dan.grade(Karina);  
@@ -121,7 +121,11 @@ Karina.sprintChallenge();
 Brandon.standUp();
 Brandon.debugsCode(Karina);
 console.log(Dan.randomGrade(Karina));
-*/
+console.log(Dan.graduate(Karina));
+
+//STRETCH
+console.log(Dan.randomGrade(Karina));
+console.log(Dan.graduate(Karina));
 
 
 
